@@ -211,14 +211,13 @@ public class ConversationActivity extends SherlockActivity implements
 
 		EditText input = (EditText) findViewById(R.id.input);
 		input.setOnKeyListener(inputKeyListener);
-//keyboard does not showup automatically
-		input.setOnClickListener(new EditText.OnClickListener() {  
-    public void onClick(View v)
-    {
-    	openSoftKeyboard(v);
-        //perform action
-    }
- });
+		// keyboard does not showup automatically
+		input.setOnClickListener(new EditText.OnClickListener() {
+			public void onClick(View v) {
+				openSoftKeyboard(v);
+				// perform action
+			}
+		});
 		pager = (ViewPager) findViewById(R.id.pager);
 
 		pagerAdapter = new ConversationPagerAdapter(this, server);
@@ -231,7 +230,7 @@ public class ConversationActivity extends SherlockActivity implements
 
 		indicator = (ConversationIndicator) findViewById(R.id.titleIndicator);
 		indicator.setServer(server);
-		indicator.setTypeface(settings.getFontType());//Typeface.MONOSPACE);
+		indicator.setTypeface(settings.getFontType());// Typeface.MONOSPACE);
 		indicator.setViewPager(pager);
 
 		indicator.setFooterColor(0xFF31B6E7);
@@ -256,7 +255,7 @@ public class ConversationActivity extends SherlockActivity implements
 		indicator.setChannelMaxSize(settings.getChannelMaxSize());
 		input.setTextSize(settings.getFontSize());
 
-		input.setTypeface(settings.getFontType());//Typeface.MONOSPACE);
+		input.setTypeface(settings.getFontType());// Typeface.MONOSPACE);
 
 		// Optimization : cache field lookups
 		Collection<Conversation> mConversations = server.getConversations();
@@ -520,10 +519,10 @@ public class ConversationActivity extends SherlockActivity implements
 			String[] items = { getResources().getString(R.string.action_ok) };
 			AlertDialog.Builder builder = new AlertDialog.Builder(this);
 			builder.setItems(items, new DialogInterface.OnClickListener() {
-	            @Override
-	            public void onClick(DialogInterface dialog, int item) {
-	            }
-	        });
+				@Override
+				public void onClick(DialogInterface dialog, int item) {
+				}
+			});
 
 			if (ChannelName.length() == 0) {
 				builder.setTitle(getResources().getString(
@@ -533,7 +532,8 @@ public class ConversationActivity extends SherlockActivity implements
 				Database db = new Database(this);
 				if (db.addFavorite(ChannelName)) {
 					builder.setTitle(getResources().getString(
-							R.string.favorite_saved) + ": " + ChannelName);
+							R.string.favorite_saved)
+							+ ": " + ChannelName);
 				} else {
 					builder.setTitle(getResources().getString(
 							R.string.favorite_already_there));
