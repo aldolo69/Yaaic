@@ -211,6 +211,36 @@ public class Settings
         );
     }
 
+
+    /**
+     * Is tab working like in MIRC?
+     *
+     * @return True if tab do a search
+     */
+    public boolean isTabAsMircEnabled()
+    {
+        return preferences.getBoolean(
+            resources.getString(R.string.key_tab_as_mirc),
+            Boolean.parseBoolean(resources.getString(R.string.default_tab_as_mirc))
+        );
+    }
+
+
+    /**
+     * Is softkeybord kept open during chat?
+     *
+     * @return True if keyboard doesnot hide
+     */
+    public boolean isKeepSoftkeyOpenEnabled()
+    {
+        return preferences.getBoolean(
+            resources.getString(R.string.key_keep_softkey_open),
+            Boolean.parseBoolean(resources.getString(R.string.default_keep_softkey_open))
+        );
+    }
+    
+    
+    
     /**
      * Play notification sound on highlight?
      *
@@ -362,4 +392,26 @@ public class Settings
             return Integer.parseInt(resources.getString(R.string.default_history_size));
         }
     }
+
+
+    /**
+     * Get the channel name max size (on display only).
+     *
+     * @return The channel name max size 
+     */
+    public int getChannelMaxSize()
+    {
+        try {
+            return Integer.parseInt(preferences.getString(
+                resources.getString(R.string.key_channel_max_size),
+                resources.getString(R.string.default_channel_max_size)
+            ));
+        } catch (NumberFormatException e) {
+            return Integer.parseInt(resources.getString(R.string.default_channel_max_size));
+        }
+    }
+
+
+
+
 }

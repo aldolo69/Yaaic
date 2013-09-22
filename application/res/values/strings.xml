@@ -239,6 +239,13 @@
     <string name="settings_debug_traffic_title">Debug IRC traffic</string>
     <string name="settings_debug_traffic_desc">Log IRC traffic to the verbose log. This may be a security risk!</string>
 
+    <string name="settings_channel_max_size_title">Channel name max size</string>
+    <string name="settings_channel_max_size_desc">Characters displayed of the channel name. 0=all</string>
+    <string name="settings_keep_softkey_open_title">Do not hide softkeyboard</string>
+    <string name="settings_keep_softkey_open_desc">Softkeyboard stay open during chat</string>
+    <string name="settings_tab_as_mirc_title">Enable MIRC like TAB</string>
+    <string name="settings_tab_as_mirc_desc">Press TAB for nick completion</string>
+    
     <string name="minute_1">1 minute</string>
     <string name="minutes_5">5 minutes</string>
     <string name="minutes_10">10 minutes</string>

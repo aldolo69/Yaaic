@@ -127,7 +127,26 @@ along with Yaaic.  If not, see <http://www.gnu.org/licenses/>.
             android:key="@string/key_history_size"
             android:defaultValue="@string/default_history_size"
             android:inputType="number" />
-    </PreferenceCategory>
+        <EditTextPreference
+            android:title="@string/settings_channel_max_size_title"
+            android:summary="@string/settings_channel_max_size_desc"
+            android:key="@string/key_channel_max_size"
+            android:defaultValue="@string/default_channel_max_size"
+            android:inputType="number" />
+        
+        <CheckBoxPreference
+            android:title="@string/settings_tab_as_mirc_title"
+            android:summary="@string/settings_tab_as_mirc_desc"
+            android:key="@string/key_tab_as_mirc"
+            android:defaultValue="@string/default_tab_as_mirc" />
+        
+        <CheckBoxPreference
+            android:title="@string/settings_keep_softkey_open_title"
+            android:summary="@string/settings_keep_softkey_open_desc"
+            android:key="@string/key_keep_softkey_open"
+            android:defaultValue="@string/default_keep_softkey_open" />
+        
+        </PreferenceCategory>
     <PreferenceCategory
         android:title="@string/settings_highlight">
         <CheckBoxPreference

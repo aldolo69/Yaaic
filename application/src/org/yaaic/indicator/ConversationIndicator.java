@@ -138,6 +138,21 @@ public class ConversationIndicator extends FrameLayout implements OnPageChangeLi
         titleIndicator.setTypeface(typeface);
     }
 
+    
+
+	/**
+	 * Set max size of a title inside a title indicator.
+	 *
+	 * @param max_chars
+	 */
+    public void setChannelMaxSize(int size)
+    {
+        titleIndicator.setChannelMaxSize(size);
+    }
+
+    
+    
+    
     /**
      * Set the {@link ViewPager} this indicator is used for.
      *
