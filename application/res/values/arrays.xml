@@ -30,6 +30,20 @@
         <item>19</item>
         <item>20</item>
     </string-array>
+
+        <string-array name="fonttype_labels" translatable="false">
+        <item>Courier</item>
+        <item>Arial</item>
+        <item>Times</item>
+    </string-array>
+    <string-array name="fonttype_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    
+    
+    
     <string-array name="reconnect_interval_labels">
         <item>@string/minute_1</item>
         <item>@string/minutes_5</item>

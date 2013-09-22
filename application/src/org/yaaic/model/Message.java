@@ -332,7 +332,7 @@ public class Message
 
         canvas.setText(this.render(context));
         canvas.setTextSize(settings.getFontSize());
-        canvas.setTypeface(Typeface.MONOSPACE);
+        canvas.setTypeface(settings.getFontType());//Typeface.MONOSPACE);
         canvas.setTextColor(COLOR_DEFAULT);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {

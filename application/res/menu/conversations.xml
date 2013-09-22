@@ -31,6 +31,11 @@ along with Yaaic.  If not, see <http://www.gnu.org/licenses/>.
         android:icon="@drawable/actionbar_users"
         android:showAsAction="ifRoom|withText" />
     <item
+        android:id="@+id/favorite"
+        android:title="@string/add_to_favorites"
+        android:icon="@drawable/actionbar_star"
+        android:showAsAction="ifRoom|withText" />
+    <item
         android:id="@+id/close"
         android:title="@string/close"
         android:icon="@android:drawable/ic_menu_close_clear_cancel"

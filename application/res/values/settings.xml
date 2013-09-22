@@ -33,6 +33,10 @@
     <string name="key_fontsize" translatable="false">fontsize</string>
     <string name="default_fontsize" translatable="false">11</string>
     
+    <string name="key_fonttype" translatable="false">fonttype</string>
+    <string name="default_fonttype" translatable="false">0</string>
+    
+    
     <string name="key_voice_recognition" translatable="false">voice_recognition</string>
     <string name="default_voice_recognition" translatable="false">false</string>
 

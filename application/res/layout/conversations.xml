@@ -50,7 +50,6 @@ along with Yaaic.  If not, see <http://www.gnu.org/licenses/>.
             android:textIsSelectable="true"
             android:imeOptions="actionSend" 
             />
-      <!--   -->
         <Button
             android:id="@+id/speech"
             android:layout_width="wrap_content"
