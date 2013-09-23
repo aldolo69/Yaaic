@@ -28,6 +28,8 @@ import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Typeface;
 import android.preference.PreferenceManager;
+import android.util.DisplayMetrics;
+import android.util.TypedValue;
 
 /**
  * The settings class is a helper class to access the different preferences via
@@ -174,12 +176,16 @@ public class Settings {
 	/**
 	 * Get the font size
 	 * 
-	 * @return The font size for conversation messages
+	 * @return The font size for conversation messages in SP
 	 */
 	public int getFontSize() {
-		return Integer.parseInt(preferences.getString(
+		DisplayMetrics metrics = resources.getDisplayMetrics();
+		float ptSize=Float.parseFloat(preferences.getString(
 				resources.getString(R.string.key_fontsize),
 				resources.getString(R.string.default_fontsize)));
+		float pxSize=ptSize*metrics.ydpi/72;
+		float spSize=pxSize/metrics.scaledDensity;
+		return (int) spSize;
 	}
 
 	public Typeface getFontType() {

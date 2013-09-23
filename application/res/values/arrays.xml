@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="fontsize_labels" translatable="false">
-        <item>8px</item>
-        <item>9px</item>
-        <item>10px</item>
-        <item>11px</item>
-        <item>12px</item>
-        <item>13px</item>
-        <item>14px</item>
-        <item>15px</item>
-        <item>16px</item>
-        <item>17px</item>
-        <item>18px</item>
-        <item>19px</item>
-        <item>20px</item>
+        <item>8pt</item>
+        <item>9pt</item>
+        <item>10pt</item>
+        <item>11pt</item>
+        <item>12pt</item>
+        <item>13pt</item>
+        <item>14pt</item>
+        <item>15pt</item>
+        <item>16pt</item>
+        <item>17pt</item>
+        <item>18pt</item>
+        <item>19pt</item>
+        <item>20pt</item>
     </string-array>
     <string-array name="fontsize_values" translatable="false">
         <item>8</item>
