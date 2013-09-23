@@ -24,6 +24,7 @@ import java.util.ArrayList;
 
 import org.yaaic.R;
 import org.yaaic.db.Database;
+import org.yaaic.model.Status;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -50,9 +51,9 @@ public class JoinActivity extends Activity implements OnClickListener,
 		OnItemClickListener, OnItemLongClickListener {
 	private ArrayAdapter<String> adapter;
 	private ArrayList<String> channels;
-    private Database db=null;
-	
-    /**
+	private Database db = null;
+
+	/**
 	 * On create
 	 */
 	@Override
@@ -110,39 +111,62 @@ public class JoinActivity extends Activity implements OnClickListener,
 		}
 	}
 
-
 	/**
 	 * On item long clicked
 	 */
 	@Override
-	public boolean onItemLongClick(AdapterView<?> list, View item, int position,
-			long id) {
+	public boolean onItemLongClick(AdapterView<?> list, View item,
+			int position, long id) {
 		final String channel = adapter.getItem(position);
 		if (channel.compareTo("") != 0) {
 
-	        String[] items = { getResources().getString(R.string.action_remove) };
+			String[] items = { getResources().getString(R.string.action_remove) };
 
-	        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-	        builder.setTitle(channel);
-	        builder.setItems(items, new DialogInterface.OnClickListener() {
-	            @Override
-	            public void onClick(DialogInterface dialog, int item) {
-	                switch (item) {
-	                    case 0: // Remove
-	                        adapter.remove(channel);
-	                        channels.remove(channel);
-	                		db.removeFavorite(channel);
-	                        break;
-	                }
-	            }
-	        });
-	        AlertDialog alert = builder.create();
-	        alert.show();
+			// //////////////////////
 
+			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+			builder.setMessage(channel);
+			builder.setCancelable(true);
+			builder.setPositiveButton(R.string.action_remove,
+					new DialogInterface.OnClickListener() {
+						@Override
+						public void onClick(DialogInterface dialog, int id) {
+							adapter.remove(channel);
+							channels.remove(channel);
+							db.removeFavorite(channel);
+						}
+					});
+			builder.setNegativeButton(R.string.action_cancel,null);
+			// new DialogInterface.OnClickListener() {
+			// @Override
+			// public void onClick(DialogInterface dialog,
+			// // int id) {
+			// // server.setMayReconnect(false);
+			// reconnectDialogActive = false;
+			// dialog.cancel();
+			// }
+			// });
+			AlertDialog alert = builder.create();
+			alert.show();
 		}
+
+		// /////////////////////
+
+		// builder.setItems(items, new DialogInterface.OnClickListener() {
+		// @Override
+		// public void onClick(DialogInterface dialog, int item) {
+		// switch (item) {
+		// // case 0: // Remove
+		// adapter.remove(channel);
+		// channels.remove(channel);
+		// db.removeFavorite(channel);
+		// break;
+		// }
+		// }
+		// });
+
+		// }
 		return false;
 	}
-
-
 
 }

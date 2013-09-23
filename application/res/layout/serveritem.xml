@@ -40,12 +40,12 @@ along with Yaaic.  If not, see <http://www.gnu.org/licenses/>.
             android:layout_width="fill_parent" 
             android:layout_height="wrap_content"
             android:text="Server"
-            android:textSize="18sp" />
+            android:textSize="10pt" />
         <TextView
            android:id="@+id/host"
            android:layout_width="fill_parent"
            android:layout_height="wrap_content"
            android:text="irc.example.com"
-           android:textSize="12sp" />
+           android:textSize="8pt" />
     </LinearLayout>
 </LinearLayout>

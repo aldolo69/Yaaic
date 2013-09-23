@@ -29,4 +29,4 @@ along with Yaaic.  If not, see <http://www.gnu.org/licenses/>.
     android:padding="10dip"
     android:gravity="center_vertical"
     android:text="@string/add_server_list"
-    android:textSize="18sp" />
+    android:textSize="10pt" />

@@ -25,4 +25,4 @@ along with Yaaic.  If not, see <http://www.gnu.org/licenses/>.
     android:layout_height="wrap_content"
     android:padding="7dp"
     android:text="/command"
-    android:textSize="14dp" />
+    android:textSize="8pt" />

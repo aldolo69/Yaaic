@@ -2,7 +2,7 @@
 <resources>
     
     
-    <style name="Theme.Yaaic.Dialog" parent="@android:style/Theme.Dialog">
+    <style name="Theme.Yaaic.Dialog" parent="Theme.Sherlock.Dialog">
         <item name="android:editTextStyle">@style/edittext_holo</item>
     </style>
     <style name="Theme.Yaaic" parent="Theme.Sherlock">

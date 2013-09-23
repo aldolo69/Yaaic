@@ -31,7 +31,7 @@ along with Yaaic.  If not, see <http://www.gnu.org/licenses/>.
         android:padding="5dp"
         android:drawableLeft="@drawable/user_title"
         android:drawablePadding="3dp"
-        android:textSize="18dp"
+        android:textSize="10pt"
         android:text="pocmo" />
     <ListView
         android:id="@android:id/list"
