@@ -120,52 +120,27 @@ public class JoinActivity extends Activity implements OnClickListener,
 		final String channel = adapter.getItem(position);
 		if (channel.compareTo("") != 0) {
 
+			// menu for item
 			String[] items = { getResources().getString(R.string.action_remove) };
-
-			// //////////////////////
-
 			AlertDialog.Builder builder = new AlertDialog.Builder(this);
-			builder.setMessage(channel);
-			builder.setCancelable(true);
-			builder.setPositiveButton(R.string.action_remove,
-					new DialogInterface.OnClickListener() {
-						@Override
-						public void onClick(DialogInterface dialog, int id) {
-							adapter.remove(channel);
-							channels.remove(channel);
-							db.removeFavorite(channel);
-						}
-					});
-			builder.setNegativeButton(R.string.action_cancel,null);
-			// new DialogInterface.OnClickListener() {
-			// @Override
-			// public void onClick(DialogInterface dialog,
-			// // int id) {
-			// // server.setMayReconnect(false);
-			// reconnectDialogActive = false;
-			// dialog.cancel();
-			// }
-			// });
-			AlertDialog alert = builder.create();
-			alert.show();
+			builder.setTitle(channel);
+			builder.setItems(items, new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int item) {
+					switch (item) {
+					case 0: // Delete item 
+						adapter.remove(channel);
+						channels.remove(channel);
+						db.removeFavorite(channel);
+						break;
+					}
+				}
+			});
+	        AlertDialog alert = builder.create();
+	        alert.show();
+
 		}
 
-		// /////////////////////
-
-		// builder.setItems(items, new DialogInterface.OnClickListener() {
-		// @Override
-		// public void onClick(DialogInterface dialog, int item) {
-		// switch (item) {
-		// // case 0: // Remove
-		// adapter.remove(channel);
-		// channels.remove(channel);
-		// db.removeFavorite(channel);
-		// break;
-		// }
-		// }
-		// });
-
-		// }
 		return false;
 	}
 
