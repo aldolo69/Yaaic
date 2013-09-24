@@ -54,6 +54,7 @@ import org.yaaic.receiver.ServerReceiver;
 
 import android.app.AlertDialog;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -61,7 +62,6 @@ import android.content.ServiceConnection;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.res.Configuration;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
@@ -107,6 +107,7 @@ public class ConversationActivity extends SherlockActivity implements
 	private ViewPager pager;
 	private ConversationIndicator indicator;
 	private ConversationPagerAdapter pagerAdapter;
+	private Context context;
 
 	private Scrollback scrollback;
 
@@ -190,7 +191,7 @@ public class ConversationActivity extends SherlockActivity implements
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
+		context = this.context;
 		serverId = getIntent().getExtras().getInt("serverId");
 		server = Yaaic.getInstance().getServerById(serverId);
 		Settings settings = new Settings(this);
@@ -758,6 +759,35 @@ public class ConversationActivity extends SherlockActivity implements
 			final String conversation = server.getSelectedConversation();
 			final Handler handler = new Handler();
 
+		    String nicknameWithoutPrefixTmp = nickname;
+
+			while (nicknameWithoutPrefixTmp.startsWith("@")
+					|| nicknameWithoutPrefixTmp.startsWith("+")
+					|| nicknameWithoutPrefixTmp.startsWith(".")
+					|| nicknameWithoutPrefixTmp.startsWith("%")) {
+				// Strip prefix(es) now
+				nicknameWithoutPrefixTmp = nicknameWithoutPrefixTmp
+						.substring(1);
+			}
+
+	final  String nicknameWithoutPrefix = nicknameWithoutPrefixTmp;
+
+			
+			
+			if (actionId == User.ACTION_WHOIS) {
+				sendMessage("/WHOIS " + nicknameWithoutPrefix);
+
+				Message message = new Message(
+						getString(R.string.message_whois_on_server));
+				message.setColor(Message.COLOR_DEFAULT);
+				message.setIcon(R.drawable.info);
+				server.getConversation(server.getSelectedConversation())
+						.addMessage(message);
+				onConversationMessage(server.getSelectedConversation());
+
+				break;//exit from command execution
+			}
+
 			// XXX: Implement me - The action should be handled after onResume()
 			// to catch the broadcasts... now we just wait a second
 			// Yes .. that's very ugly - we need some kind of queue that is
@@ -772,16 +802,16 @@ public class ConversationActivity extends SherlockActivity implements
 						// Do nothing
 					}
 
-					String nicknameWithoutPrefix = nickname;
+			//		String nicknameWithoutPrefix = nickname;
 
-					while (nicknameWithoutPrefix.startsWith("@")
-							|| nicknameWithoutPrefix.startsWith("+")
-							|| nicknameWithoutPrefix.startsWith(".")
-							|| nicknameWithoutPrefix.startsWith("%")) {
-						// Strip prefix(es) now
-						nicknameWithoutPrefix = nicknameWithoutPrefix
-								.substring(1);
-					}
+					//		while (nicknameWithoutPrefix.startsWith("@")
+					//		|| nicknameWithoutPrefix.startsWith("+")
+					//		|| nicknameWithoutPrefix.startsWith(".")
+					//		|| nicknameWithoutPrefix.startsWith("%")) {
+					//	// Strip prefix(es) now
+					//	nicknameWithoutPrefix = nicknameWithoutPrefix
+					//			.substring(1);
+					//}
 
 					switch (actionId) {
 					case User.ACTION_REPLY:

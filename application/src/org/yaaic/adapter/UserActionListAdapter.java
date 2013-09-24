@@ -49,8 +49,9 @@ public class UserActionListAdapter extends BaseAdapter
         User.ACTION_VOICE,
         User.ACTION_DEVOICE,
         User.ACTION_KICK,
-        User.ACTION_BAN
-    };
+        User.ACTION_BAN,
+        User.ACTION_WHOIS
+         };
 
     /**
      * Labels for actions
@@ -63,7 +64,8 @@ public class UserActionListAdapter extends BaseAdapter
         R.string.user_action_voice,
         R.string.user_action_devoice,
         R.string.user_action_kick,
-        R.string.user_action_ban
+        R.string.user_action_ban,
+        R.string.user_action_whois
     };
 
     /**
@@ -78,6 +80,8 @@ public class UserActionListAdapter extends BaseAdapter
         R.drawable.action_devoice,
         R.drawable.action_kick,
         R.drawable.action_ban,
+        R.drawable.action_whois
+        
     };
 
     /**

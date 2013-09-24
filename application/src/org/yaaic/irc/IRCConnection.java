@@ -330,11 +330,6 @@ public class IRCConnection extends PircBot
     @Override
     protected void onDeop(String target, String sourceNick, String sourceLogin, String sourceHostname, String recipient)
     {
-        Message message = new Message(service.getString(R.string.message_deop, sourceNick, recipient));
-        message.setIcon(R.drawable.op);
-        message.setColor(Message.COLOR_BLUE);
-        server.getConversation(target).addMessage(message);
-
         Intent intent = Broadcast.createConversationIntent(
             Broadcast.CONVERSATION_MESSAGE,
             server.getId(),
@@ -344,6 +339,10 @@ public class IRCConnection extends PircBot
         service.sendBroadcast(intent);
     }
 
+
+    
+    
+    
     /**
      * On DeVoice
      */
