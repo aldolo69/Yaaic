@@ -175,7 +175,6 @@
     <string name="message_disconnected">Disconnected</string>
     <string name="message_not_connected">Not connected</string>
     <string name="message_users_on_chan">Users on %1$s:</string>
-    <string name="message_whois_on_server">See /WHOIS result in server page</string>
     
     <string name="user_action_reply">Reply</string>
     <string name="user_action_query">Query</string>

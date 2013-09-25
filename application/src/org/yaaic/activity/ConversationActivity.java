@@ -776,15 +776,6 @@ public class ConversationActivity extends SherlockActivity implements
 			
 			if (actionId == User.ACTION_WHOIS) {
 				sendMessage("/WHOIS " + nicknameWithoutPrefix);
-
-				Message message = new Message(
-						getString(R.string.message_whois_on_server));
-				message.setColor(Message.COLOR_DEFAULT);
-				message.setIcon(R.drawable.info);
-				server.getConversation(server.getSelectedConversation())
-						.addMessage(message);
-				onConversationMessage(server.getSelectedConversation());
-
 				break;//exit from command execution
 			}
 
