@@ -25,6 +25,13 @@ import java.util.Collection;
 import java.util.LinkedHashMap;
 
 import org.yaaic.R;
+import org.yaaic.irc.IRCBinder;
+import org.yaaic.standout.SoTerminal;
+import org.yaaic.standout.SoTerminalList;
+import org.yaaic.standout.SoTerminalWindow;
+
+import wei.mark.standout.StandOutWindow;
+import android.content.Context;
 
 /**
  * A server as we know it
@@ -52,6 +59,7 @@ public class Server
     private String selected = "";
     private boolean isForeground = false;
     private boolean mayReconnect = false;
+    private Context ctx=null; 
 
     /**
      * Create a new server object
@@ -355,7 +363,8 @@ public class Server
      */
     public void removeConversation(String name)
     {
-        conversations.remove(name.toLowerCase());
+    	SoTerminalList.getSoTerminalList().closeConversation(ctx, name.toLowerCase());
+    	conversations.remove(name.toLowerCase());
     }
 
     /**
@@ -363,7 +372,8 @@ public class Server
      */
     public void clearConversations()
     {
-        conversations.clear();
+        SoTerminalList.getSoTerminalList().closeServer(ctx, this);
+    	conversations.clear();
 
         // reset defaults
         conversations.put(ServerInfo.DEFAULT_NAME, new ServerInfo());
@@ -460,4 +470,18 @@ public class Server
     {
         this.mayReconnect = mayReconnect;
     }
+
+    
+public void showPopup(Context ctx,IRCBinder binder,Conversation conv,String chan)
+{
+	this.ctx=ctx;
+	int id=SoTerminalList.getSoTerminalList().addSoTerminalList(this,binder, conv);
+	SoTerminal soT=SoTerminalList.getSoTerminalList().getSoTerminal(id);
+ if(soT.bVisibile==false)
+ {
+ 	StandOutWindow
+	.show(ctx, SoTerminalWindow.class, id);
+ }
+} 
+
 }

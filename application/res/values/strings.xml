@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    
+    <string name="so_hidden">hidden</string>
+    <string name="so_click_to_restore">chick here to restore</string>
+    <string name="so_popup_cap_paste">Paste</string>
+    <string name="so_popup_cap_cut">Cut</string>
+    <string name="so_popup_cap_copy">Copy</string>
+    <string name="so_popup_cap_select">Select</string>
+        
+    
+    
+    
     <string name="add_server_menu">Add server</string>
     <string name="add_server_list">Add server</string>
 
@@ -14,7 +25,11 @@
     <string name="channels_label">Channels</string>
     <string name="add_server_label">Add new server</string>
     <string name="edit_server_label">Edit server</string>
-
+    <string name="show_popup">Show popup</string>
+    
+    
+    
+    
     <string name="server_title">Title</string>
     <string name="server_host">Host</string>
     <string name="server_port">Port</string>

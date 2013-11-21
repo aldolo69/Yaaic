@@ -27,10 +27,12 @@ import java.util.regex.Pattern;
 import org.yaaic.R;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ImageSpan;
+import android.util.DisplayMetrics;
 import android.util.Log;
 
 /**
@@ -108,8 +110,11 @@ public abstract class Smilies
             Log.d("Smilies", "SID: "+mappings.get(m.group(1)).intValue());
             Log.d("Smilies", "OID: "+R.drawable.smiley_smile);
             Drawable smilie = context.getResources().getDrawable(mappings.get(m.group(1)).intValue());
-            smilie.setBounds(0, 0, smilie.getIntrinsicWidth(), smilie.getIntrinsicHeight());
-            ImageSpan span = new ImageSpan(smilie, ImageSpan.ALIGN_BOTTOM);
+            Resources resources = context.getApplicationContext().getResources();
+    		DisplayMetrics metrics = resources.getDisplayMetrics();
+            smilie.setBounds(0, 0,(int)Math.round(smilie.getIntrinsicWidth() * metrics.scaledDensity), 
+            		(int)Math.round(smilie.getIntrinsicHeight() * metrics.scaledDensity));
+            ImageSpan span = new ImageSpan(smilie, ImageSpan.ALIGN_BASELINE);
             text.setSpan(span, m.start(), m.end(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
 

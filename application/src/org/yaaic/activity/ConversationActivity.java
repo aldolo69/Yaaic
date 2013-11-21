@@ -51,6 +51,7 @@ import org.yaaic.model.Status;
 import org.yaaic.model.User;
 import org.yaaic.receiver.ConversationReceiver;
 import org.yaaic.receiver.ServerReceiver;
+import org.yaaic.standout.SoTerminalList;
 
 import android.app.AlertDialog;
 import android.content.ComponentName;
@@ -93,10 +94,10 @@ public class ConversationActivity extends SherlockActivity implements
 		ServiceConnection, ServerListener, ConversationListener {
 	public static final int REQUEST_CODE_SPEECH = 99;
 
-	private static final int REQUEST_CODE_JOIN = 1;
-	private static final int REQUEST_CODE_USERS = 2;
-	private static final int REQUEST_CODE_USER = 3;
-	private static final int REQUEST_CODE_NICK_COMPLETION = 4;
+	public static final int REQUEST_CODE_JOIN = 1;
+	public static final int REQUEST_CODE_USERS = 2;
+	public static final int REQUEST_CODE_USER = 3;
+	public static final int REQUEST_CODE_NICK_COMPLETION = 4;
 
 	private int serverId;
 	private Server server;
@@ -470,7 +471,21 @@ public class ConversationActivity extends SherlockActivity implements
 		case android.R.id.home:
 			finish();
 			break;
+		case R.id.show_popup:
+			String ChannelName = "";
+			Collection<Conversation> mConversations = server.getConversations();
+			for (Conversation conversation : mConversations) {
+				if (conversation.getType() == Conversation.TYPE_CHANNEL
+						&& conversation.getStatus() == Conversation.STATUS_SELECTED
 
+				) {
+					ChannelName = conversation.getName();
+				}
+			}
+
+			server.showPopup(this.getApplicationContext(),this.binder,pagerAdapter.getItem(pager
+					.getCurrentItem()),ChannelName);			
+			break;
 		case R.id.disconnect:
 			server.setStatus(Status.DISCONNECTED);
 			server.setMayReconnect(false);
@@ -506,8 +521,8 @@ public class ConversationActivity extends SherlockActivity implements
 
 		case R.id.favorite:
 			// add channel to favorite list
-			String ChannelName = "";
-			Collection<Conversation> mConversations = server.getConversations();
+			ChannelName = "";
+			 mConversations = server.getConversations();
 			for (Conversation conversation : mConversations) {
 				if (conversation.getType() == Conversation.TYPE_CHANNEL
 						&& conversation.getStatus() == Conversation.STATUS_SELECTED
@@ -583,8 +598,15 @@ public class ConversationActivity extends SherlockActivity implements
 	 */
 	@Override
 	public void onConversationMessage(String target) {
-		Conversation conversation = server.getConversation(target);
 
+		 
+		
+		Conversation conversation = server.getConversation(target);
+//redirected to popup
+		if(SoTerminalList.getSoTerminalList().getSoTerminal(server, conversation)!=-1) return;
+
+		
+		
 		if (conversation == null) {
 			// In an early state it can happen that the conversation object
 			// is not created yet.

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    
+    style="@style/Theme.Yaaic.Dialog"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/abs__dialog_full_holo_dark"
+    android:focusable="true"
+    android:layout_margin="0dp"
+    android:padding="10dp"
+    android:focusableInTouchMode="true"
+    android:layout_centerInParent="true"
+    android:orientation="vertical" >
+        <ListView
+            android:id="@+id/generic_list"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+             />
+</LinearLayout>

@@ -49,6 +49,8 @@ public abstract class Conversation
     private int status = 1;
     private int newMentions = 0;
     private int historySize = DEFAULT_HISTORY_SIZE;
+    
+ 
 
     /**
      * Get the type of conversation (channel, query, ..)

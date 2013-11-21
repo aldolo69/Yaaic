@@ -31,7 +31,8 @@ along with Yaaic.  If not, see <http://www.gnu.org/licenses/>.
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.VIBRATE" />
-
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    
     <application
         android:icon="@drawable/icon"
         android:label="Yaaic"
@@ -107,6 +108,10 @@ along with Yaaic.  If not, see <http://www.gnu.org/licenses/>.
             android:theme="@style/Theme.Yaaic.Dialog" >
         </activity>
 
+        <service android:name="org.yaaic.standout.SoTerminalWindow" 
+                    >
+        </service>
+        
         <service android:name=".irc.IRCService" >
         </service>
     </application>

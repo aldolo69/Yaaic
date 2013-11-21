@@ -27,6 +27,7 @@ import org.yaaic.utils.Smilies;
 
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -36,6 +37,7 @@ import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.ImageSpan;
 import android.text.util.Linkify;
+import android.util.DisplayMetrics;
 import android.widget.TextView;
 
 /**
@@ -262,8 +264,10 @@ public class Message
 
             if (hasIcon() && settings.showIcons()) {
                 Drawable drawable = context.getResources().getDrawable(icon);
-                drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
-                canvas.setSpan(new ImageSpan(drawable, ImageSpan.ALIGN_BOTTOM), 0, 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                Resources resources = context.getApplicationContext().getResources();
+        		DisplayMetrics metrics = resources.getDisplayMetrics();
+                 drawable.setBounds(0, 0, (int)Math.round(drawable.getIntrinsicWidth() * metrics.scaledDensity) , drawable.getIntrinsicHeight());
+                canvas.setSpan(new ImageSpan(drawable, ImageSpan.ALIGN_BASELINE), 0, 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             }
 
             if (hasColor() && settings.showColors()) {

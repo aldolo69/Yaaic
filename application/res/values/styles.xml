@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
     
     
     <style name="Theme.Yaaic.Dialog" parent="Theme.Sherlock.Dialog">
         <item name="android:editTextStyle">@style/edittext_holo</item>
-    </style>
+        <item name="android:textAppearance">@style/textview_holo</item>
+        </style>
     <style name="Theme.Yaaic" parent="Theme.Sherlock">
         <item name="android:editTextStyle">@style/edittext_holo</item>
-    </style>
+        <item name="android:textAppearance">@style/textview_holo</item>
+        </style>
     <style name="edittext_holo" parent="@android:style/Widget.EditText">
         <item name="android:focusable">true</item>
         <item name="android:focusableInTouchMode">true</item>
@@ -17,5 +19,8 @@
         <item name="android:gravity">center_vertical</item>
         <item name="android:textColorHint">#FFFFFF</item>
         <item name="android:textColorHighlight">#FF0000</item>
+     </style>
+    <style name="textview_holo" parent="@android:style/TextAppearance">
+        <item name="android:textSize">8pt</item>
      </style>
 </resources>

@@ -41,6 +41,9 @@ import org.yaaic.model.ServerInfo;
 import org.yaaic.model.Settings;
 import org.yaaic.model.Status;
 import org.yaaic.receiver.ReconnectReceiver;
+import org.yaaic.standout.SoTerminalWindow;
+
+import wei.mark.standout.StandOutWindow;
 
 import android.app.AlarmManager;
 import android.app.Notification;
@@ -639,4 +642,9 @@ public class IRCService extends Service
     {
         return binder;
     }
+
+
+ 
+
+
 }
